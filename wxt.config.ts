@@ -1,6 +1,16 @@
 import { defineConfig } from 'wxt';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-// See https://wxt.dev/api/config.html
 export default defineConfig({
-  modules: ['@wxt-dev/module-react'],
+  vite: () => ({
+    plugins: [
+      react(),
+      tailwindcss()
+    ],
+  }),
+  manifest: {
+    permissions: ["activeTab"],
+    host_permissions: ["<all_urls>"],
+  }
 });
