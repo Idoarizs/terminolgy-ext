@@ -6,11 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "wxt",
-    "dev:firefox": "wxt -b firefox",
+    "dev:brave": "wxt -b brave",
     "build": "wxt build",
-    "build:firefox": "wxt build -b firefox",
+    "build:brave": "wxt build -b brave",
     "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
+    "zip:brave": "wxt zip -b brave",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
