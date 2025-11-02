@@ -13,6 +13,9 @@ import {
   AIResponses,
 } from "@/components/index";
 
+// utils
+import { buildPrompt } from "@/lib/utils";
+
 function App() {
   const [openPreferences, setOpenPreferences] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>("");
@@ -27,12 +30,14 @@ function App() {
     setLoading(true);
     try {
       const apiKey = import.meta.env.WXT_OPENROUTER_API_KEY;
+
+      const prompt = await buildPrompt(term);
       const payload = {
         model: "openai/gpt-oss-20b:free",
         messages: [
           {
             role: "user",
-            content: `Jelasin secara singkat apa itu ${term} seolah-olah aku adalah pelajar baru yang ingin memahami konsep ini dengan mudah. sertakan emoji yg lukas sesuai konteks ya!`,
+            content: prompt,
           },
         ],
       };
