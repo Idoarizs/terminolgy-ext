@@ -15,13 +15,6 @@ const InputField: React.FC<InputFieldProps> = ({
 }) => {
   const [value, setValue] = useState("");
 
-  const onSubmit = () => {
-    if (value.trim()) {
-      handleSubmit(value.trim());
-      setValue("");
-    }
-  };
-
   return (
     <div className="flex items-center gap-2 mt-3 text-black">
       <input
@@ -32,7 +25,7 @@ const InputField: React.FC<InputFieldProps> = ({
         className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
       />
       <button
-        onClick={onSubmit}
+        onClick={() => handleSubmit(value)}
         className="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm transition"
       >
         <Plus size={16} />

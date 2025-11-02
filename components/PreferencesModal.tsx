@@ -13,9 +13,11 @@ import { preferencesData } from "@/lib/data";
 // utils
 import {
     getPreferences,
-    updatePreference,
-    Preferences,
+    updatePreference
 } from "@/lib/utils";
+
+// types
+import { Preferences } from "@/lib/utils";
 
 interface PreferencesModalProps {
     onClose: () => void;
@@ -37,8 +39,6 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({ onClose }) => {
         if (!values) return;
         const updated = { ...values, [key]: val };
         setValues(updated);
-
-        console.log(`Preference updated: ${key} → ${val}`);
         updatePreference(key, val);
     };
 
@@ -53,12 +53,12 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({ onClose }) => {
     }
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[1px] z-50">
             <Card className="w-[380px] relative p-4">
                 <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                         <Sliders className="text-indigo-500" size={18} />
-                        <h2 className="font-semibold text-gray-800 text-base">
+                        <h2 className="font-medium text-gray-800 text-base">
                             Learning Preferences
                         </h2>
                     </div>
@@ -81,13 +81,6 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({ onClose }) => {
                             onChange={(val) => handleChange(item.key, val)}
                         />
                     ))}
-                </div>
-
-                <div className="mt-4 p-2 border-t border-gray-200 text-xs text-gray-600">
-                    <p className="font-semibold mb-1">Current Values:</p>
-                    <pre className="bg-gray-100 p-2 rounded text-[11px] overflow-x-auto">
-                        {JSON.stringify(values, null, 2)}
-                    </pre>
                 </div>
             </Card>
         </div>
