@@ -1,34 +1,49 @@
-import { useState } from 'react';
-import reactLogo from '@/assets/react.svg';
-import wxtLogo from '/wxt.svg';
-import './App.css';
+// react
+import React, { useState } from "react";
+
+// icons
+import { Settings } from "lucide-react";
+
+// components
+import { Card, InputField, SectionHeader, PreferencesModal } from "@/components/index";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [openPreferences, setOpenPreferences] = useState(false);
+
+  const onSubmit = (term: string) => {
+    alert("Added term:" + term);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://wxt.dev" target="_blank">
-          <img src={wxtLogo} className="logo" alt="WXT logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>WXT + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="max-w-lg w-full bg-gradient-to-br from-indigo-500 to-blue-500 text-white shadow-lg p-5">
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <h1 className="text-xs font-semibold">Learning Companion</h1>
+          <p className="text-sm text-indigo-100">Personalized for you</p>
+        </div>
+        <button
+          onClick={() => setOpenPreferences(true)}
+          className="p-2 hover:bg-indigo-400 rounded-full transition"
+        >
+          <Settings size={18} />
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the WXT and React logos to learn more
-      </p>
-    </>
+
+      <Card>
+        <SectionHeader
+          title="Unknown Terminology"
+          subtitle="Add words or concepts you'd like to learn more about"
+        />
+        <InputField
+          placeholder="Enter a term (e.g., 'Quantum Computing')"
+          handleSubmit={onSubmit}
+        />
+      </Card>
+
+      {openPreferences && (
+        <PreferencesModal onClose={() => setOpenPreferences(false)} />
+      )}
+    </div>
   );
 }
 
