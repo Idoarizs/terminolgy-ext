@@ -7,33 +7,33 @@ export interface PreferenceItem {
 
 export const preferencesData: PreferenceItem[] = [
   {
-    label: "Gaya Belajar", // → Set the Scene
-    options: ["Visual", "Auditori", "Membaca/Menulis", "Kinestetik"],
+    label: "Learning Style",
+    options: ["Concise", "Detailed", "Step-by-step", "Example-based"],
     key: "style",
-    default: "Visual",
+    default: "Concise",
   },
   {
-    label: "Kedalaman Penjelasan", // → Be Specific
-    options: ["Dasar", "Menengah", "Lanjutan"],
+    label: "Explanation Depth",
+    options: ["Basic", "Intermediate", "Advanced"],
     key: "depth",
-    default: "Menengah",
+    default: "Basic",
   },
   {
-    label: "Kecepatan Belajar", // → Simplify Your Language
-    options: ["Lambat", "Sedang", "Cepat"],
+    label: "Learning Pace",
+    options: ["Slow", "Moderate", "Fast"],
     key: "pace",
-    default: "Sedang",
+    default: "Slow",
   },
   {
-    label: "Format Konten", // → Structure the Output
-    options: ["Teks", "Tabel", "Campuran"],
+    label: "Content Format",
+    options: ["Text", "Table", "Mixed"],
     key: "format",
-    default: "Campuran",
+    default: "Mixed",
   },
   {
-    label: "Bahasa", // → Simplify Your Language (linguistic)
-    options: ["Bahasa Indonesia", "Bahasa Inggris"],
+    label: "Language",
+    options: ["English", "Indonesia"],
     key: "language",
-    default: "Bahasa Indonesia",
+    default: "Indonesia",
   },
 ];

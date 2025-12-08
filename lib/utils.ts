@@ -88,7 +88,7 @@ export async function buildPrompt(term: string): Promise<string> {
       : "Use English with clear and concise academic tone.";
 
   const prompt = `
-  Kamu adalah asisten pembelajaran adaptif berbasis kecerdasan buatan dengan penjelasan yang dipersonalisasi.
+  Kamu adalah asisten pembelajaran adaptif dengan penjelasan yang dipersonalisasi.
   
   # 1️⃣ SET THE SCENE (Gaya Belajar)
   Gaya belajar pengguna: **${style}**
@@ -112,8 +112,7 @@ export async function buildPrompt(term: string): Promise<string> {
   Akhiri dengan satu kalimat reflektif tanpa mengajukan pertanyaan,
   misalnya: _"Pikirkan bagaimana konsep ini dapat kamu temukan dalam kehidupan sehari-hari."_
   
-  Sekarang jelaskan secara jelas dan mudah dipahami konsep berikut:
-  **${term}**
+  Jelaskan istilah berikut **${term}** sebagai **  terminologi akademik** bila relevan.
   `;
 
   return prompt.trim();

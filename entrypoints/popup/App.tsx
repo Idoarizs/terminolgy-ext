@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 // icons
-import { Settings } from "lucide-react";
+import { Settings, LoaderCircleIcon } from "lucide-react";
 
 // components
 import {
@@ -23,6 +23,7 @@ function App() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const onSubmit = (term: string) => {
+    setUserInput("");
     setUserInput(term);
   };
 
@@ -81,7 +82,7 @@ function App() {
         </div>
         <button
           onClick={() => setOpenPreferences(true)}
-          className="p-2 hover:bg-indigo-400 rounded-full transition"
+          className="p-2 hover:bg-indigo-400 rounded-full transition cursor-pointer"
         >
           <Settings size={18} />
         </button>
@@ -90,26 +91,42 @@ function App() {
       <div className="space-y-4">
         <Card>
           <SectionHeader
-            title="Unknown Terminology"
-            subtitle="Add words or concepts you'd like to learn more about"
+            title="I Want to Learn"
+            subtitle="Add specific terms you'd like to learn more about"
+            icon="book"
           />
+
           <InputField
             placeholder="Enter a term (e.g., 'Quantum Computing')"
             handleSubmit={onSubmit}
           />
+
+          {!userInput && (
+            <p className="text-xs text-red-300 mt-1 ml-1">
+              Input cannot be empty.
+            </p>
+          )}
         </Card>
 
-        <Card>
-          <SectionHeader
-            title="AI Explanation"
-            subtitle={
-              loading
-                ? "Fetching explanation..."
-                : "Here's a simplified explanation of your term"
-            }
-          />
-          <AIResponses response={loading ? "AI is thinking..." : aiResponse} />
-        </Card>
+        {loading && (
+          <Card>
+            <div className="text-gray-500 flex flex-col gap-2 text-center">
+              <LoaderCircleIcon className="animate-spin mx-auto text-indigo-500" />
+              <span className="animate-pulse">Generating...</span>
+            </div>
+          </Card>
+        )}
+
+        {!loading && aiResponse && (
+          <Card>
+            <SectionHeader
+              title="AI Explanation"
+              subtitle="Here's a simplified explanation of your term"
+              icon="bot"
+            />
+            <AIResponses response={aiResponse} />
+          </Card>
+        )}
       </div>
 
       {openPreferences && (

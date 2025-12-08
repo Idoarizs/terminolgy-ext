@@ -64,7 +64,7 @@ const PreferencesModal: React.FC<PreferencesModalProps> = ({ onClose }) => {
                     </div>
                     <button
                         onClick={onClose}
-                        className="text-gray-400 hover:text-gray-600 transition text-sm"
+                        className="text-gray-400 hover:text-gray-600 transition text-sm cursor-pointer"
                         aria-label="Close preferences modal"
                     >
                         ✕

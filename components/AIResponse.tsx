@@ -16,7 +16,7 @@ interface AIResponsesProps {
 
 const AIResponses: React.FC<AIResponsesProps> = ({ response }) => {
   return (
-    <div className="overflow-auto p-3 rounded-lg text-black text-sm">
+    <div className="overflow-auto p-3 rounded-lg text-black text-sm max-h-80">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSanitize, rehypeHighlight]}
