@@ -29,9 +29,9 @@ function App() {
 
   const onFetchAIResponse = async (term: string) => {
     setLoading(true);
-    try {
-      const apiKey = import.meta.env.WXT_OPENROUTER_API_KEY;
+    const apiKey = import.meta.env.WXT_OPENROUTER_API_KEY;
 
+    try {
       const prompt = await buildPrompt(term);
       const payload = {
         model: "openai/gpt-oss-20b:free",
@@ -60,7 +60,6 @@ function App() {
 
       setAIResponse(aiMessage);
     } catch (error) {
-      console.error("Error fetching AI response:", error);
       setAIResponse("Sorry, something went wrong while fetching the response.");
     } finally {
       setLoading(false);

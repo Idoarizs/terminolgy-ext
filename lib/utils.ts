@@ -108,11 +108,7 @@ export async function buildPrompt(term: string): Promise<string> {
   Format yang diinginkan: **${format}**
   ${formatDesc}
   
-  # 5️⃣ SHARE FEEDBACK (Refleksi Pasif)
-  Akhiri dengan satu kalimat reflektif tanpa mengajukan pertanyaan,
-  misalnya: _"Pikirkan bagaimana konsep ini dapat kamu temukan dalam kehidupan sehari-hari."_
-  
-  Jelaskan istilah berikut **${term}** sebagai **  terminologi akademik** bila relevan.
+  Jelaskan istilah berikut **${term}** sebagai **  terminologi akademik** jika relevan.
   `;
 
   return prompt.trim();
